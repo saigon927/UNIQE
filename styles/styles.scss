@@ -1,0 +1,178 @@
+//Импорты
+
+@import "stylenull.scss";
+
+//Шрифты
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/FontAwesome.woff2') format('woff2'),
+        url('../fonts/FontAwesome.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+	font-family: 'Roboto - Black';
+	src: url('../fonts/Roboto-Black.eot');
+	src: local('☺'), url('../fonts/Roboto-Black.woff') format('woff'), url('../fonts/Roboto-Black.ttf') format('truetype'), url('../fonts/Roboto-Black.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+//font-family: 'Open Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+//font-family: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;&display=swap');
+
+//font-family: 'Source Sans Pro', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
+
+//Переменные
+
+$mw: 1355px;
+
+//Миксины
+
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+	$addSize: $startSize - $minSize;
+	@if $type==1 {
+		//Только если меньше контейнера
+		#{$property}: $startSize + px;
+		@media (max-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+		}
+	} @else if $type==2 {
+		//Только если больше контейнера
+		#{$property}: $startSize + px;
+		@media (min-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+		}
+	} @else {
+		//Всегда
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+	}
+}
+@mixin flexbox() {
+	display: flex;
+	justify-content: center;
+	align-items :center;
+}
+
+//Контейнер
+
+.container {
+	max-width: $mw;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 15px;
+	@media (max-width: $mw + 15px) {
+		max-width: 900px;
+	}
+	@media (max-width: 915px){
+		max-width: 767px;
+	}
+	@media (max-width: 782px){
+		max-width: 480px;
+	}
+}
+
+//Основные стили
+
+.wraper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+}
+
+.content {
+	flex: 1 1 auto;
+}
+.header {
+	width: 100%;
+	background-color: #ffc038;
+	padding: 76px 0 0 0;
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+	&__line_1 {
+		display: flex;
+	}
+	&__logo {
+		display: flex;
+		align-items: center;
+	}
+	&__frame {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		width: 120px;
+		height: 38px;
+		color: #fdfcfc;
+		font-family: "Roboto - Black";
+		font-size: 26px;
+		font-weight: 400;
+		font-style: normal;
+		letter-spacing: normal;
+		line-height: normal;
+		text-align: left;
+		text-transform: uppercase;
+		border: 3px solid #fff200;
+		text-align: center;
+	}
+	&__unframe {
+		color: #464646;
+		font-family: "Roboto - Black";
+		font-size: 26px;
+		font-weight: 400;
+		font-style: normal;
+		letter-spacing: normal;
+		line-height: normal;
+		text-align: left;
+		text-transform: uppercase;
+		margin-left: 5px;
+	}
+	&__list {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex: 1 1 auto;
+		ul {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			li {
+				color: #464646;
+				font-family: Roboto, sans-serif;
+				font-size: 14px;
+				font-weight: 700;
+				font-style: normal;
+				letter-spacing: normal;
+				line-height: normal;
+				text-align: left;
+				text-transform: uppercase;
+				margin: 0 0 0 30px;
+			}
+		}
+	}
+	&__phone {
+		display: flex;
+		justify-content: flex-end;
+		color: #464646;
+		font-family: "Roboto - Black";
+		font-size: 12px;
+		font-weight: 400;
+		font-style: normal;
+		letter-spacing: normal;
+		line-height: normal;
+		text-align: left;
+	}
+}
+.container {
+}
+.footer {
+}
